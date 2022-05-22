@@ -1,3 +1,10 @@
 .profile__add-button {
   max-width: 150px;
+  transition: opacity 0.3 ease;
+  background-color: transparent;
+  border: none;
+}
+.profile__add-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
