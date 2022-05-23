@@ -11,11 +11,9 @@ let inputTitle = document.querySelector('.popup__profile-title');
 let popupForm = document.querySelector('.popup__form');
 let likeButton = document.querySelector('.place__like-button');
 
-likeButton.addEventListener('click', function(){
-  likeButton.classList.remove('place__like-button');
-  likeButton.classList.add('place__like-button-active');
+likeButton.onclick = function(){
+  likeButton.classList.toggle('active');
 }
-)
 
 editButton.addEventListener('click', function() {
   let currentName = profilePageName.textContent;
