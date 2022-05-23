@@ -10,10 +10,17 @@ let inputTitle = document.querySelector('.popup__profile-title');
 
 let popupForm = document.querySelector('.popup__form');
 let likeButton = document.querySelector('.place__like-button');
+let likeButtons = document.querySelectorAll('.place__like-button');
+
+/*
+likeButtons.forEach((likeBUtton) function(){
+  likeButton.classList.toggle('active');
+})
 
 likeButton.onclick = function(){
   likeButton.classList.toggle('active');
 }
+*/
 
 editButton.addEventListener('click', function() {
   let currentName = profilePageName.textContent;
