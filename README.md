@@ -24,9 +24,8 @@
 * [GitHubPages](https://madwizz.github.io/mesto/)
 
 **Что можно улучшить**
-* <label>
-* <article> + <ul> / <li>
-* 
+* label tag
+* article tag + ul / li
 
 # Project work: "Russian Travel"
 
