@@ -5,23 +5,24 @@ let closeButton = document.querySelector('.popup__close-button');
 let profilePageName = document.querySelector('.profile__name');
 let profilePageTitle = document.querySelector('.profile__title');
 
-let inputName = document.querySelector('.popup__profile-name');
-let inputTitle = document.querySelector('.popup__profile-title');
+let inputName = document.querySelector('.popup__profile-info_name');
+let inputTitle = document.querySelector('.popup__profile-info_title');
 
 let popupForm = document.querySelector('.popup__form');
-let likeButton = document.querySelector('.place__like-button');
-let likeButtons = document.querySelectorAll('.place__like-button');
 
 /*
-likeButtons.forEach((likeBUtton) function(){
-  likeButton.classList.toggle('active');
-})
+let likeButton = document.querySelector('.place__like-button');
+let likeButtons = document.querySelectorAll('.place__like-button');
+let likeButtonActive = document.querySelector('.place__like-button_active');
 
-likeButton.onclick = function(){
-  likeButton.classList.toggle('active');
-}
+
+likeButtons.forEach((likeButton) function() {
+  likeButton.addEventListener('click', function() {
+    likeButton.classList.remove('place__like-button');
+    likeButton.classList.add('place__like-button_active');
+  })
+});
 */
-
 editButton.addEventListener('click', function() {
   let currentName = profilePageName.textContent;
   let currentTitle = profilePageTitle.textContent;

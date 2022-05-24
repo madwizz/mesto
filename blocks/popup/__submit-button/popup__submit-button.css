@@ -1,6 +1,6 @@
 .popup__submit-button {
   width: 358px;
-  height: 50px;
+  min-height: 50px;
   background-image: url(../../../images/submit-button.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,7 +16,7 @@
 @media screen and (max-width: 469px) and (min-width: 320px) {
   .popup__submit-button {
     width: 238px;
-    height: 46px;
+    min-height: 46px;
     margin: 0 0 25px 0;
     background-size: contain;
   }

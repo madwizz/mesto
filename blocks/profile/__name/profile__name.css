@@ -6,6 +6,7 @@
   margin: 0;
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
 }
 @media screen and (max-width: 1101px) and (min-width: 320px) {
   .profile__name {
