@@ -24,7 +24,7 @@
           <div class="profile__row">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button">
-              <img src="./images/edit-button.svg" alt="профиль-кнопка-редактировать">
+              <img src="./images/pencil.svg" alt="профиль-кнопка-редактировать">
             </button>
           </div>
           <p class="profile__title">Исследователь океана</p>
@@ -34,13 +34,13 @@
     </section>
     <section class="places">
 
-      <div class="place">
+      <article class="place">
         <img class="place__photo" src="./images/karachevsk.jpg" alt="фото-место">
         <div class="place__info">
           <h2 class="place__name">Карачаевск</h2>
           <button class="place__like-button place__like-button_active" type="button"></button>
         </div>
-      </div>
+      </article>
 
       <div class="place">
         <img class="place__photo" src="./images/elbrus.jpg" alt="фото-место">
@@ -93,8 +93,8 @@
       </button>
       <form name="popup-form" class="popup__form">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <label class="popup__label" for="profilename">Имя профиля<input name="profile-name" type="text" class="popup__profile-info popup__profile-info_name"></label>
-        <label class="popup__label" for="profiletitle">Профессия<input name="profile-title" type="text" class="popup__profile-info popup__profile-info_title"></label>
+        <label class="popup__label" for="profilename">Введите имя профиля<input name="profile-name" type="text" class="popup__profile-info popup__profile-info_name"></label>
+        <label class="popup__label" for="profiletitle">Введите профессию<input name="profile-title" type="text" class="popup__profile-info popup__profile-info_title"></label>
         <button class="popup__submit-button" type="submit"></button>
       </form>
     </div>
