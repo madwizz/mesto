@@ -23,6 +23,10 @@
 **Page**
 * [GitHubPages](https://madwizz.github.io/mesto/)
 
+**Что можно улучшить**
+* label tag
+* article tag + ul / li
+
 # Project work: "Russian Travel"
 
 ## A typical one-page site, adapted for desktop and mobile devices. Edit profile feature is added with JavaScript. Created as part of a study at Yandex.Praktikum on a web development course. 
