@@ -27,7 +27,7 @@
 * label tag
 * article tag + ul / li
 
-# Project work: "Russian Travel"
+# Project work: "Mesto"
 
 ## A typical one-page site, adapted for desktop and mobile devices. Edit profile feature is added with JavaScript. Created as part of a study at Yandex.Praktikum on a web development course. 
 
