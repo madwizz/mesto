@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta name="Место Россия" content="Проект соцсети о местах в России на Яндекс.Практикуме">
+  <meta name="description" content="Проект соцсети о местах в России на Яндекс.Практикуме">
   <meta name="author" content="Сапегин Дмитрий">
   <meta name="keywords" content="Россия, место, практикум, яндекс, проект">
   <meta charset="UTF-8">
@@ -28,7 +28,9 @@
           <p class="profile__title">Исследователь океана</p>
         </div>
       </div>
-      <button class="profile__add-button" type="button"></button>
+      <button class="profile__add-button" type="button">
+        <img src="./images/plus-button.svg" alt="профиль-кнопка-редактировать">
+      </button>
     </section>
     <section class="places">
 
@@ -40,45 +42,45 @@
         </div>
       </article>
 
-      <div class="place">
+      <article class="place">
         <img class="place__photo" src="./images/elbrus.jpg" alt="фото-место">
         <div class="place__info">
           <h2 class="place__name">Гора Эльбрус</h2>
           <button class="place__like-button place__like-button_active" type="button"></button>
         </div>
-      </div>
+      </article>
 
-      <div class="place">
+      <article class="place">
         <img class="place__photo" src="./images/dombai.jpg" alt="фото-место">
         <div class="place__info">
           <h2 class="place__name">Домбай</h2>
           <button class="place__like-button place__like-button_active" type="button"></button>
         </div>
-      </div>
+      </article>
 
-      <div class="place">
+      <article class="place">
         <img class="place__photo" src="./images/elbrus.jpg" alt="фото-место">
         <div class="place__info">
           <h2 class="place__name">Гора Эльбрус</h2>
           <button class="place__like-button place__like-button_active" type="button"></button>
         </div>
-      </div>
+      </article>
 
-      <div class="place">
+      <article class="place">
         <img class="place__photo" src="./images/dombai.jpg" alt="фото-место">
         <div class="place__info">
           <h2 class="place__name">Домбай</h2>
           <button class="place__like-button place__like-button_active" type="button"></button>
         </div>
-      </div>
+      </article>
 
-      <div class="place">
+      <article class="place">
         <img class="place__photo" src="./images/karachevsk.jpg" alt="фото-место">
         <div class="place__info">
           <h2 class="place__name">Карачаевск</h2>
           <button class="place__like-button place__like-button_active" type="button"></button>
         </div>
-      </div>
+      </article>
 
     </section>
   </main>
@@ -89,11 +91,11 @@
       <button class="popup__close-button" type="button">
         <img class="popup__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
       </button>
-      <form name="popup-form" class="popup__form">
+      <form name="profile-info-form" class="popup__info-form">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <label class="popup__label" for="profile-name">Введите имя профиля<input id="profile-name" name="profile-name" type="text" class="popup__profile-info popup__profile-info_name"></label>
-        <label class="popup__label" for="profile-title">Введите профессию<input id="profile-title" name="profile-title" type="text" class="popup__profile-info popup__profile-info_title"></label>
-        <button class="popup__submit-button" type="submit"></button>
+        <label class="popup__label" for="profile-name"><input id="profile-name" name="profile-name" type="text" class="popup__profile-info popup__profile-info-name"></label>
+        <label class="popup__label" for="profile-title"><input id="profile-title" name="profile-title" type="text" class="popup__profile-info popup__profile-info-title"></label>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
