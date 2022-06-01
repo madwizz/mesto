@@ -5,8 +5,8 @@ let closeButton = document.querySelector('.popup__close-button');
 let profilePageName = document.querySelector('.profile__name');
 let profilePageTitle = document.querySelector('.profile__title');
 
-let inputName = document.querySelector('.popup__profile-info-name');
-let inputTitle = document.querySelector('.popup__profile-info-title');
+let inputName = document.querySelector('.popup__input-name');
+let inputTitle = document.querySelector('.popup__input-title');
 
 let popupForm = document.querySelector('.popup__info-form');
 
