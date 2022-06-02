@@ -29,7 +29,7 @@
         </div>
       </div>
       <button class="profile__add-button" type="button">
-        <img src="./images/plus-button.svg" alt="профиль-кнопка-редактировать">
+        <img src="./images/plus-button.svg" alt="профиль-кнопка-добавить">
       </button>
     </section>
     <section class="places">
@@ -40,6 +40,7 @@
           <h2 class="place__name">Карачаевск</h2>
           <button class="place__like-button place__like-button_active" type="button"></button>
         </div>
+        <button class="place__delete-button" type="button"></button>
       </article>
 
       <article class="place">
@@ -97,6 +98,19 @@
         <label class="popup__label" for="profile-title"><input id="profile-title" name="profile-title" type="text" class="popup__profile-info popup__input-title"></label>
         <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
+    </div>
+  </section>
+
+  <section class="popupAdd">
+    <div class="popupAdd__content">
+      <button class="popupAdd__close-button" type="button">
+        <img class="popupAdd__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
+      </button>
+      <form name="add-form" class="popupAdd__add-form">
+        <h3 class="popupAdd__title">Новое место</h3>
+        <label class="popupAdd__label" for="place-name"><input id="place-name" name="place-name" type="text" class="popupAdd__info popupAdd__input-place-name"></label>
+        <label class="popupAdd__label" for="place-link"><input id="place-link" name="place-link" type="text" class="popupAdd__info popup__input-place-link"></label>
+        <button class="popupAdd__submit-button" type="submit">Сохранить</button>
     </div>
   </section>
 
