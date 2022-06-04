@@ -24,7 +24,6 @@
 * [GitHubPages](https://madwizz.github.io/mesto/)
 
 **Что можно улучшить**
-* label tag
 * article tag + ul / li
 
 # Project work: "Mesto"

@@ -10,6 +10,35 @@ let inputTitle = document.querySelector('.popup__input-title');
 
 let popupForm = document.querySelector('.popup__info-form');
 
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+// editButton
+
 editButton.addEventListener('click', function() {
   let currentName = profilePageName.textContent;
   let currentTitle = profilePageTitle.textContent;
@@ -40,7 +69,7 @@ let addButton = document.querySelector('.profile__add-button');
 let placeName = document.querySelector('.place__name');
 let placePhoto = document.querySelector('.place__photo');
 
-let popupAddForm = document.querySelector('.popupAdd__info-form');
+let popupAddForm = document.querySelector('.popupAdd__add-form');
 
 let inputAddName = document.querySelector('.popupAdd__input-place-name');
 let inputAddPhoto = document.querySelector('.popupAdd__input-place-link');
@@ -52,8 +81,22 @@ addButton.addEventListener('click', function() {
 }
 )
 
+//addPlace
+
+const placesContainer = document.querySelector('.places');
+
 popupAddForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
+
+  const newPlace = document.querySelector('#place').content.cloneNode(true);
+
+  newPlace.querySelector('.place__name').textContent = inputAddName.value;
+  newPlace.querySelector('.place__photo').src = inputAddPhoto.value;
+  
+  addPlaceListeners(newPlace);
+
+  placesContainer.append(newPlace);
+
   popupAdd.classList.remove('popupAddOpen');
 }
 )
@@ -63,20 +106,60 @@ closeAddButton.addEventListener('click', function() {
 }
 )
 
+//likeButton & deleteButton
+
+function addPlaceListeners (place) {
+  const deletePlaceButton = place.querySelector('.place__delete-button');
+  deletePlaceButton.addEventListener('click', (evt) => {
+    evt.target.parentNode.remove();
+  } 
+  );
+  const likeButton = place.querySelector('.place__like-button');
+  likeButton.addEventListener('click', () => {
+    likeButton.classList.toggle('place__like-button_active');
+  }
+  );
+}
+
+const places = document.querySelectorAll('.place');
+
+for (let i = 0; i < places.length; i ++) {
+  addPlaceListeners(places[i]);
+}
+
+// forEach( (place) => addPlaceListeners(place)); not legal
+
+// Array.from(document.querySelectorAll('.place')).forEach(addPlaceListeners);
 
 
 
+
+// placeTemplate
 /*
+function addPlace (photoValue, titleValue) {
+
+}
+
+const placeTemplate = document.querySelector('#place').content;
+
+const place = placeTemplate.querySelector('.place').cloneNode(true);
+const placePhoto = place.querySelector('.place__photo');
+const placeTitle = place.querySelector('.place__title');
+placePhoto
+
+placePhoto.querySelector('.place__photo').src = '#'
+placeTitle.querySelector('.place__title').textContent = '#'
+
+places.append(placeElement);
+
+
+// likeButton
+
 let likeButton = document.querySelector('.place__like-button');
 let likeButtons = document.querySelectorAll('.place__like-button');
 let likeButtonActive = document.querySelector('.place__like-button_active');
-
-
-likeButtons.forEach((likeButton) function() {
-  likeButton.addEventListener('click', function() {
-    likeButton.classList.remove('place__like-button');
-    likeButton.classList.add('place__like-button_active');
-  })
-});
 */
+
+
+
 
