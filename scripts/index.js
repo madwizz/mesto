@@ -1,16 +1,18 @@
 // popupProfile
 
-let popup = document.querySelector('.popup');
-let editButton = document.querySelector('.profile__edit-button');
-let closeButton = document.querySelector('.popup__close-button');
-let profilePageName = document.querySelector('.profile__name');
-let profilePageTitle = document.querySelector('.profile__title');
-let inputName = document.querySelector('.popup__input-name');
-let inputTitle = document.querySelector('.popup__input-title');
+const popup = document.querySelector('.popup');
+const editButton = document.querySelector('.profile__edit-button');
+const closeButton = document.querySelector('.popup__close-button');
+const profilePageName = document.querySelector('.profile__name');
+const profilePageTitle = document.querySelector('.profile__title');
+const inputName = document.querySelector('.popup__input-name');
+const inputTitle = document.querySelector('.popup__input-title');
 
-let popupForm = document.querySelector('.popup__info-form');
+const popupForm = document.querySelector('.popup__info-form');
 
-const initialCards = [
+// initialPlaces
+
+const initialPlaces = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -37,9 +39,84 @@ const initialCards = [
   }
 ];
 
+// popupAdd
+
+const popupAdd = document.querySelector('.popupAdd');
+const addButton = document.querySelector('.profile__add-button');
+
+const placeName = document.querySelector('.place__name');
+const placePhoto = document.querySelector('.place__photo');
+
+const popupAddForm = document.querySelector('.popupAdd__add-form');
+
+const inputAddName = document.querySelector('.popupAdd__input-place-name');
+const inputAddPhoto = document.querySelector('.popupAdd__input-place-link');
+
+const closeAddButton = document.querySelector('.popupAdd__close-button');
+
+addButton.addEventListener('click', () => {
+  popupAdd.classList.add('popupAddOpen');
+}
+);
+
+// submit + addNewPlace
+
+const placesContainer = document.querySelector('.places');
+
+popupAddForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  addPlace(inputAddName.value, inputAddPhoto.value);
+
+  popupAdd.classList.remove('popupAddOpen');
+}
+)
+
+closeAddButton.addEventListener('click', () => {
+  popupAdd.classList.remove('popupAddOpen');
+}
+)
+
+// addPlace six times on start-up
+
+for (let i = 0; i < initialPlaces.length; i++) {
+  addPlace(initialPlaces[i].name, initialPlaces[i].link);
+}
+
+
+// addPlace on start-up
+
+
+function addPlace(name, link) {
+
+  const newPlace = document.querySelector('#place').content.cloneNode(true);
+
+  newPlace.querySelector('.place__name').textContent = name;
+  newPlace.querySelector('.place__photo').src = link;
+
+  
+  addPlaceListeners(newPlace);
+
+  placesContainer.append(newPlace);
+}
+
+// popupPhotoOpen
+
+const popupImage = document.querySelector('.popupPhoto__image');
+const popupPhoto = document.querySelector('.popupPhoto');
+
+// popupPhotoClose
+
+const closePopupPhoto = document.querySelector('.popupPhoto__close-button');
+
+closePopupPhoto.addEventListener('click', () => {
+  popupPhoto.classList.remove('popupPhotoOpen');
+}
+);
+
 // editButton
 
-editButton.addEventListener('click', function() {
+editButton.addEventListener('click', () => {
   let currentName = profilePageName.textContent;
   let currentTitle = profilePageTitle.textContent;
   inputName.value = currentName;
@@ -48,7 +125,7 @@ editButton.addEventListener('click', function() {
 }
 )
 
-popupForm.addEventListener('submit', function(evt) {
+popupForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   profilePageName.textContent = inputName.value;
   profilePageTitle.textContent = inputTitle.value;
@@ -56,55 +133,11 @@ popupForm.addEventListener('submit', function(evt) {
 }
 )
 
-closeButton.addEventListener('click', function() {
+closeButton.addEventListener('click', () => {
   popup.classList.remove('popupOpen');
 }
 )
 
-// popupAdd
-
-let popupAdd = document.querySelector('.popupAdd');
-let addButton = document.querySelector('.profile__add-button');
-
-let placeName = document.querySelector('.place__name');
-let placePhoto = document.querySelector('.place__photo');
-
-let popupAddForm = document.querySelector('.popupAdd__add-form');
-
-let inputAddName = document.querySelector('.popupAdd__input-place-name');
-let inputAddPhoto = document.querySelector('.popupAdd__input-place-link');
-
-let closeAddButton = document.querySelector('.popupAdd__close-button');
-
-addButton.addEventListener('click', function() {
-  popupAdd.classList.add('popupAddOpen');
-}
-)
-
-//addPlace
-
-const placesContainer = document.querySelector('.places');
-
-popupAddForm.addEventListener('submit', function(evt) {
-  evt.preventDefault();
-
-  const newPlace = document.querySelector('#place').content.cloneNode(true);
-
-  newPlace.querySelector('.place__name').textContent = inputAddName.value;
-  newPlace.querySelector('.place__photo').src = inputAddPhoto.value;
-  
-  addPlaceListeners(newPlace);
-
-  placesContainer.append(newPlace);
-
-  popupAdd.classList.remove('popupAddOpen');
-}
-)
-
-closeAddButton.addEventListener('click', function() {
-  popupAdd.classList.remove('popupAddOpen');
-}
-)
 
 //likeButton & deleteButton
 
@@ -117,6 +150,14 @@ function addPlaceListeners (place) {
   const likeButton = place.querySelector('.place__like-button');
   likeButton.addEventListener('click', () => {
     likeButton.classList.toggle('place__like-button_active');
+  }
+  );
+  const placeImage = place.querySelector('.place__photo');
+  const popupPhotoName = document.querySelector('.popupPhoto__name');
+  placeImage.addEventListener('click', () => {
+    popupPhoto.classList.add('popupPhotoOpen');
+    popupImage.src = placeImage.src;
+    popupPhotoName.textContent = placeName.textContent;
   }
   );
 }
@@ -135,6 +176,7 @@ for (let i = 0; i < places.length; i ++) {
 
 
 // placeTemplate
+
 /*
 function addPlace (photoValue, titleValue) {
 
@@ -158,6 +200,7 @@ places.append(placeElement);
 let likeButton = document.querySelector('.place__like-button');
 let likeButtons = document.querySelectorAll('.place__like-button');
 let likeButtonActive = document.querySelector('.place__like-button_active');
+
 */
 
 

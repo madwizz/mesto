@@ -34,14 +34,16 @@
     </section>
 
     <section class="places">
+      <!--
       <article class="place">
-        <img class="place__photo" src="/images/karachevsk.jpg" alt="фото-место">
+        <img class="place__photo" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
         <div class="place__info">
-          <h2 class="place__name">Карачаевск</h2>
+          <h2 class="place__name">Архыз</h2>
           <button class="place__like-button place__like-button_active" type="button"></button>
         </div>
         <button class="place__delete-button" type="button"></button>
       </article>
+      -->
     </section>
 
   </main>
@@ -54,8 +56,8 @@
       </button>
       <form name="profile-info-form" class="popup__info-form">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <label class="popup__label" for="profile-name"><input id="profile-name" name="profile-name" type="text" class="popup__profile-info popup__input-name"></label>
-        <label class="popup__label" for="profile-title"><input id="profile-title" name="profile-title" type="text" class="popup__profile-info popup__input-title"></label>
+        <label class="popup__label" for="profile-name"><input id="profile-name" name="profile-name" placeholder="Имя профиля" type="text" class="popup__profile-info popup__input-name"></label>
+        <label class="popup__label" for="profile-title"><input id="profile-title" name="profile-title" placeholder="Профессия" type="text" class="popup__profile-info popup__input-title"></label>
         <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -68,17 +70,27 @@
       </button>
       <form name="add-form" class="popupAdd__add-form">
         <h3 class="popupAdd__title">Новое место</h3>
-        <label class="popupAdd__label" for="place-name"><input id="place-name" name="place-name" type="text" class="popupAdd__info popupAdd__input-place-name"></label>
-        <label class="popupAdd__label" for="place-link"><input id="place-link" name="place-link" type="text" class="popupAdd__info popupAdd__input-place-link"></label>
+        <label class="popupAdd__label" for="place-name"><input id="place-name" name="place-name" placeholder="Имя места" type="text" class="popupAdd__info popupAdd__input-place-name"></label>
+        <label class="popupAdd__label" for="place-link"><input id="place-link" name="place-link" placeholder="Ссылка" type="text" class="popupAdd__info popupAdd__input-place-link"></label>
         <button class="popupAdd__submit-button" type="submit">Сохранить</button>
     </div>
   </section>
 
+  <section class="popupPhoto">
+    <article class="popupPhoto__content">
+      <button class="popupPhoto__close-button" type="button">
+        <img class="popupPhoto__close-button-image" src="/images/close-button.svg" alt="попап-кнопка-закрытия">
+      </button>
+      <img class="popupPhoto__image" src="#" alt="">
+      <p class="popupPhoto__name"></p>
+    </article>
+  </section>
+
   <template id="place">
     <article class="place">
-      <img class="place__photo" src="/images/karachevsk.jpg" alt="фото-место">
+      <img class="place__photo" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
       <div class="place__info">
-        <h2 class="place__name">Карачаевск</h2>
+        <h2 class="place__name">Архыз</h2>
         <button class="place__like-button place__like-button_active" type="button"></button>
       </div>
       <button class="place__delete-button" type="button"></button>

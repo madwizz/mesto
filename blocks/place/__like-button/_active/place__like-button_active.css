@@ -4,7 +4,7 @@
   transition: opacity 0.3 ease;
   background-color: transparent;
   border: none;
-  background-image: url(../../../images/like-button-active.svg);
+  background-image: url(../../../../images/like-button-active.svg);
   background-repeat: no-repeat;
   background-size: cover;
 }
