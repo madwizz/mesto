@@ -97,7 +97,7 @@ function addPlaceListeners (place) {
   placeImage.addEventListener('click', () => {
     popupPhoto.classList.add('popupPhotoOpen');
     popupImage.src = placeImage.src;
-    popupPhotoName.textContent = placeName.textContent;
+    popupPhotoName.textContent = placeName.innerText;
   }
   );
 }
