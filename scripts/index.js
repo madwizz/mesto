@@ -30,7 +30,6 @@ const closePopupPhoto = document.querySelector('.popupPhoto__close-button');
 
 const popupImage = document.querySelector('.popupPhoto__image');
 const popupPhoto = document.querySelector('.popupPhoto');
-const placeName = document.querySelector('.place__name');
 
 // activate buttons for newPlaces
 
@@ -94,10 +93,11 @@ function addPlaceListeners (place) {
   );
   const placeImage = place.querySelector('.place__photo');
   const popupPhotoName = document.querySelector('.popupPhoto__name');
+  const placeName = place.querySelector('.place__name');
   placeImage.addEventListener('click', () => {
     popupPhoto.classList.add('popupPhotoOpen');
     popupImage.src = placeImage.src;
-    popupPhotoName.textContent = placeName.innerText;
+    popupPhotoName.textContent = placeName.textContent;
   }
   );
 }
