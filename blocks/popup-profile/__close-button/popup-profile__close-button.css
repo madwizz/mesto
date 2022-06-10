@@ -1,0 +1,26 @@
+.popup-profile__close-button {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background-color: transparent;
+  border: none;
+  transition: opacity 0.3s ease;
+}
+.popup-profile__close-button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 505px) and (min-width: 469px) {
+  .popup-profile__close-button {
+    top: -40px;
+    right: -10px;
+  }
+}
+
+@media screen and (max-width: 468px) and (min-width: 320px) {
+  .popup-profile__close-button {
+    top: -35px;
+    right: -10px;
+  }
+}

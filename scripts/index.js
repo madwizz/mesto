@@ -1,22 +1,22 @@
 // popupProfile
 
-const popup = document.querySelector('.popup');
-const editButton = document.querySelector('.profile__edit-button');
-const closeButton = document.querySelector('.popup__close-button');
+const popupProfile = document.querySelector('.popup-profile');
+const editProfileButton = document.querySelector('.profile__edit-button');
+const closeProfileButton = document.querySelector('.popup-profile__close-button');
 const profilePageName = document.querySelector('.profile__name');
 const profilePageTitle = document.querySelector('.profile__title');
-const inputName = document.querySelector('.popup__input-name');
-const inputTitle = document.querySelector('.popup__input-title');
-const popupForm = document.querySelector('.popup__info-form');
+const inputProfileName = document.querySelector('.popup-profile__info_input-name');
+const inputProfileTitle = document.querySelector('.popup-profile__info_input-title');
+const popupProfileForm = document.querySelector('.popup-profile__info-form');
 
 // popupAdd
 
-const popupAdd = document.querySelector('.popupAdd');
+const popupAdd = document.querySelector('.popup-add');
 const addButton = document.querySelector('.profile__add-button');
-const popupAddForm = document.querySelector('.popupAdd__add-form');
-const inputAddName = document.querySelector('.popupAdd__input-place-name');
-const inputAddPhoto = document.querySelector('.popupAdd__input-place-link');
-const closeAddButton = document.querySelector('.popupAdd__close-button');
+const popupAddForm = document.querySelector('.popup-add__form');
+const inputAddName = document.querySelector('.popup-add__info_input-place-name');
+const inputAddPhoto = document.querySelector('.popup-add__info_input-place-link');
+const closeAddButton = document.querySelector('.popup-add__close-button');
 
 // submit + addNewPlace
 
@@ -24,66 +24,48 @@ const placesContainer = document.querySelector('.places');
 
 // popupPhotoClose
 
-const closePopupPhoto = document.querySelector('.popupPhoto__close-button');
+const closePopupPhoto = document.querySelector('.popup-photo__close-button');
 
 // popupPhotoOpen
 
-const popupImage = document.querySelector('.popupPhoto__image');
-const popupPhoto = document.querySelector('.popupPhoto');
+const popupImage = document.querySelector('.popup-photo__image');
+const popupPhoto = document.querySelector('.popup-photo');
 
 // activate buttons for newPlaces
 
 const places = document.querySelectorAll('.place');
 
-// initialPlaces
+// new place template
 
-const initialPlaces = [
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  }
-];
+const newPlaceTemplate = document.querySelector('#place').content;
 
-// addPlace on start-up
+// createPlace
 
-function addPlace(name, link) {
+function createPlace(name, link) {
+  const newPlace = newPlaceTemplate.cloneNode(true);
+  const placeName = newPlace.querySelector('.place__name');
+  const placeImage = newPlace.querySelector('.place__photo');
+  const placePhoto = newPlace.querySelector('.place__photo');
 
-  const newPlace = document.querySelector('#place').content.cloneNode(true);
+  placeName.textContent = name;
+  placeImage.alt = name;
+  placePhoto.src = link;
 
-  newPlace.querySelector('.place__name').textContent = name;
-  newPlace.querySelector('.place__photo').src = link;
-  
-  addPlaceListeners(newPlace);
+  return newPlace
+}
 
-  placesContainer.prepend(newPlace);
+// addPlace to the page card = place
+
+function addPlace(card) {
+  placesContainer.prepend(card);
 }
 
 //likeButton, deleteButton & popupPhoto
 
-function addPlaceListeners (place) {
+function addPlaceListeners(place) {
   const deletePlaceButton = place.querySelector('.place__delete-button');
   deletePlaceButton.addEventListener('click', (evt) => {
-    evt.target.parentNode.remove();
+    evt.target.closest("article").remove();
   } 
   );
   const likeButton = place.querySelector('.place__like-button');
@@ -92,93 +74,85 @@ function addPlaceListeners (place) {
   }
   );
   const placeImage = place.querySelector('.place__photo');
-  const popupPhotoName = document.querySelector('.popupPhoto__name');
+  const popupPhotoName = document.querySelector('.popup-photo__name');
   const placeName = place.querySelector('.place__name');
   placeImage.addEventListener('click', () => {
-    popupPhoto.classList.add('popupPhotoOpen');
+    popupPhoto.classList.add('popup-photo_open');
     popupImage.src = placeImage.src;
+    popupImage.alt = placeImage.alt;
     popupPhotoName.textContent = placeName.textContent;
   }
   );
 }
 
-// activate buttons for newPlaces
-
-for (let i = 0; i < places.length; i ++) {
-  addPlaceListeners(places[i]);
-}
-
-/*
- forEach( (place) => addPlaceListeners(place)); not legal
- Array.from(document.querySelectorAll('.place')).forEach(addPlaceListeners);
-*/
-
 // addPlace six times on start-up
 
 for (let i = 0; i < initialPlaces.length; i++) {
-  addPlace(initialPlaces[i].name, initialPlaces[i].link);
+  const place = createPlace(initialPlaces[i].name, initialPlaces[i].link);
+  addPlaceListeners(place);
+  addPlace(place);
 }
 
 // open popupAdd button
 
 addButton.addEventListener('click', () => {
-  popupAdd.classList.add('popupAddOpen');
+  popupAdd.classList.add('popup-add_open');
 }
 );
 
 // submit button + addNewPlace
 
-popupAddForm.addEventListener('submit', (evt) => {
+function addFormSubmitHandler(evt) {
   evt.preventDefault();
-
-  addPlace(inputAddName.value, inputAddPhoto.value);
-
-  popupAdd.classList.remove('popupAddOpen');
+  const newPlace = createPlace(inputAddName.value, inputAddPhoto.value);
+  addPlaceListeners(newPlace);
+  addPlace(newPlace);
+  popupAdd.classList.remove('.popup-add_open');
+  popupAddForm.reset();
 }
-);
+popupAddForm.addEventListener('submit', addFormSubmitHandler);
 
 // close popupAdd button
 
 closeAddButton.addEventListener('click', () => {
-  popupAdd.classList.remove('popupAddOpen');
+  popupAdd.classList.remove('popup-add_open');
 }
 );
 
 // popupPhotoClose
 
 closePopupPhoto.addEventListener('click', () => {
-  popupPhoto.classList.remove('popupPhotoOpen');
+  popupPhoto.classList.remove('popup-photo_open');
 }
 );
 
 // open editPopup button
 
-editButton.addEventListener('click', () => {
-  let currentName = profilePageName.textContent;
-  let currentTitle = profilePageTitle.textContent;
-  inputName.value = currentName;
-  inputTitle.value = currentTitle;
-  popup.classList.add('popupOpen');
+editProfileButton.addEventListener('click', () => {
+  const currentName = profilePageName.textContent;
+  const currentTitle = profilePageTitle.textContent;
+  inputProfileName.value = currentName;
+  inputProfileTitle.value = currentTitle;
+  popupProfile.classList.add('popup-profile_open');
 }
 );
 
 // submit button + profileInfoEdit
 
-popupForm.addEventListener('submit', (evt) => {
+popupProfileForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  profilePageName.textContent = inputName.value;
-  profilePageTitle.textContent = inputTitle.value;
-  popup.classList.remove('popupOpen');
+  profilePageName.textContent = inputProfileName.value;
+  profilePageTitle.textContent = inputProfileTitle.value;
+  popupProfile.classList.remove('popup-profile_open');
 }
 );
 
 // close editPopup button
 
-closeButton.addEventListener('click', () => {
-  popup.classList.remove('popupOpen');
+closeProfileButton.addEventListener('click', () => {
+  popupProfile.classList.remove('popup-profile_open');
 }
 );
-
 
 
 
