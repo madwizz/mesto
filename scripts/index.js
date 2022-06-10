@@ -107,7 +107,7 @@ function addFormSubmitHandler(evt) {
   const newPlace = createPlace(inputAddName.value, inputAddPhoto.value);
   addPlaceListeners(newPlace);
   addPlace(newPlace);
-  popupAdd.classList.remove('.popup-add_open');
+  popupAdd.classList.remove('popup-add_open');
   popupAddForm.reset();
 }
 popupAddForm.addEventListener('submit', addFormSubmitHandler);
