@@ -38,41 +38,41 @@
   </main>
   <footer class="footer">&copy; 2022 Mesto Russia</footer>
 
-  <section class="popup-profile">
-    <div class="popup-profile__content">
-      <button class="popup-profile__close-button" type="button">
-        <img class="popup-profile__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
+  <section class="popup popup_edit">
+    <div class="popup__content">
+      <button class="popup__close-button popup__close-button_edit" type="button">
+        <img class="popup__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
       </button>
-      <form name="profile-info-form" class="popup-profile__info-form">
-        <h3 class="popup-profile__title">Редактировать профиль</h3>
-        <label class="popup-profile__label" for="profile-name"><input id="profile-name" name="profile-name" placeholder="Имя профиля" type="text" class="popup-profile__info popup-profile__info_input-name"></label>
-        <label class="popup-profile__label" for="profile-title"><input id="profile-title" name="profile-title" placeholder="Профессия" type="text" class="popup-profile__info popup-profile__info_input-title"></label>
-        <button class="popup-profile__submit-button" type="submit">Сохранить</button>
+      <form name="edit-form" class="popup__form popup__form_edit">
+        <h3 class="popup__title popup__title_edit">Редактировать профиль</h3>
+        <label class="popup__label" for="profile-name"><input id="profile-name" name="profile-name" placeholder="Имя профиля" type="text" class="popup__info popup-profile__info_input-name"></label>
+        <label class="popup__label" for="profile-title"><input id="profile-title" name="profile-title" placeholder="Профессия" type="text" class="popup__info popup-profile__info_input-title"></label>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
 
-  <section class="popup-add">
-    <div class="popup-add__content">
-      <button class="popup-add__close-button" type="button">
-        <img class="popup-add__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
+  <section class="popup popup_add">
+    <div class="popup__content">
+      <button class="popup__close-button popup__close-button_add" type="button">
+        <img class="popup__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
       </button>
-      <form name="add-form" class="popup-add__form">
-        <h3 class="popup-add__title">Новое место</h3>
-        <label class="popup-add__label" for="place-name"><input id="place-name" name="place-name" placeholder="Название" type="text" class="popup-add__info popup-add__info_input-place-name"></label>
-        <label class="popup-add__label" for="place-link"><input id="place-link" name="place-link" placeholder="Ссылка на картинку" type="text" class="popup-add__info popup-add__info_input-place-link"></label>
-        <button class="popup-add__submit-button" type="submit">Сохранить</button>
+      <form name="add-form" class="popup__form popup__form_add">
+        <h3 class="popup__title popup__title_add">Новое место</h3>
+        <label class="popup__label" for="place-name"><input id="place-name" name="place-name" placeholder="Название" type="text" class="popup__info popup-add__info_input-place-name"></label>
+        <label class="popup__label" for="place-link"><input id="place-link" name="place-link" placeholder="Ссылка на картинку" type="text" class="popup__info popup-add__info_input-place-link"></label>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
 
-  <section class="popup-photo">
-    <div class="popup-photo__content">
-      <button class="popup-photo__close-button" type="button">
-        <img class="popup-photo__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
+  <section class="popup popup_photo">
+    <div class="popup__photo-content">
+      <button class="popup__close-button popup__close-button_photo" type="button">
+        <img class="popup__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
       </button>
-      <img class="popup-photo__image" src="#" alt="">
-      <p class="popup-photo__name"></p>
+      <img class="popup__photo-image" src="#" alt="">
+      <p class="popup__photo-name"></p>
     </div>
   </section>
 
