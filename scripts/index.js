@@ -2,11 +2,13 @@
 
 const popupEdit = document.querySelector('.popup_edit');
 const editProfileButton = document.querySelector('.profile__edit-button');
-const closeButton = document.querySelector('.popup__close-button');
+const closeEdit = document.querySelector('.popup__close-button_edit');
 const profilePageName = document.querySelector('.profile__name');
 const profilePageTitle = document.querySelector('.profile__title');
+
 const inputProfileName = document.querySelector('.popup_input_profile-name');
-const inputProfileTitle = document.querySelector('.popup_input-profile-title');
+const inputProfileTitle = document.querySelector('.popup_input_profile-title');
+
 const popupEditForm = document.querySelector('.popup__form_edit');
 
 // popupAdd
@@ -17,14 +19,18 @@ const popupAddForm = document.querySelector('.popup__form_add');
 const inputAddName = document.querySelector('.popup_input_place-name');
 const inputAddPhoto = document.querySelector('.popup_input_place-link');
 
+const closeAdd = document.querySelector('.popup__close-button_add');
+
 // submit + addNewPlace
 
 const placesContainer = document.querySelector('.places');
 
-// popupPhotoOpen
+// popupPhoto
 
 const popupImage = document.querySelector('.popup__photo-image');
 const popupPhoto = document.querySelector('.popup_photo');
+
+const closePhoto = document.querySelector('.popup__close-button_photo');
 
 // activate buttons for newPlaces
 
@@ -34,6 +40,15 @@ const places = document.querySelectorAll('.place');
 
 const newPlaceTemplate = document.querySelector('#place').content;
 
+// open + close popup
+
+const openPopup = (popup) => {
+  popup.classList.add('popup_opened');
+}
+const closePopup = (popup) => {
+  popup.classList.remove('popup_opened');
+}
+
 // createPlace
 
 function createPlace(name, link) {
@@ -41,7 +56,6 @@ function createPlace(name, link) {
   const placeName = newPlace.querySelector('.place__name');
   const placeImage = newPlace.querySelector('.place__photo');
   const placePhoto = newPlace.querySelector('.place__photo');
-
   placeName.textContent = name;
   placeImage.alt = name;
   placePhoto.src = link;
@@ -53,15 +67,6 @@ function createPlace(name, link) {
 
 function addPlace(card) {
   placesContainer.prepend(card);
-}
-
-// open + close popup function
-
-const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-}
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
 }
 
 //likeButton, deleteButton & popupPhoto
@@ -103,14 +108,14 @@ addButton.addEventListener('click', () => {
   openPopup(popupAdd);
 }
 );
-closeButton.addEventListener('click', () => {
+closeAdd.addEventListener('click', () => {
   closePopup(popupAdd);
 }
 );
 
 // popupPhotoClose
 
-closeButton.addEventListener('click', () => {
+closePhoto.addEventListener('click', () => {
   closePopup(popupPhoto);
 }
 );
@@ -122,8 +127,7 @@ function addFormSubmitHandler(evt) {
   const newPlace = createPlace(inputAddName.value, inputAddPhoto.value);
   addPlaceListeners(newPlace);
   addPlace(newPlace);
-  popupClose(popupAdd);
-  popupAdd.classList.remove('popup-add_open');
+  closePopup(popupAdd);
   popupAddForm.reset();
 }
 popupAddForm.addEventListener('submit', addFormSubmitHandler);
@@ -131,14 +135,12 @@ popupAddForm.addEventListener('submit', addFormSubmitHandler);
 // open + close popupEdit buttons
 
 editProfileButton.addEventListener('click', () => {
-  const currentName = profilePageName.textContent;
-  const currentTitle = profilePageTitle.textContent;
-  inputProfileName.value = currentName;
-  inputProfileTitle.value = currentTitle;
   openPopup(popupEdit);
+  inputProfileName.value = profilePageName.textContent;
+  inputProfileTitle.value = profilePageTitle.textContent;
 }
 );
-closeButton.addEventListener('click', () => {
+closeEdit.addEventListener('click', () => {
   closePopup(popupEdit);
 })
 
