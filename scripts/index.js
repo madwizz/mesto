@@ -5,8 +5,8 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelector('.popup__close-button');
 const profilePageName = document.querySelector('.profile__name');
 const profilePageTitle = document.querySelector('.profile__title');
-const inputProfileName = document.querySelector('.popup-profile__info_input-name');
-const inputProfileTitle = document.querySelector('.popup-profile__info_input-title');
+const inputProfileName = document.querySelector('.popup_input_profile-name');
+const inputProfileTitle = document.querySelector('.popup_input-profile-title');
 const popupEditForm = document.querySelector('.popup__form_edit');
 
 // popupAdd
@@ -14,8 +14,8 @@ const popupEditForm = document.querySelector('.popup__form_edit');
 const popupAdd = document.querySelector('.popup_add');
 const addButton = document.querySelector('.profile__add-button');
 const popupAddForm = document.querySelector('.popup__form_add');
-const inputAddName = document.querySelector('.popup-add__info_input-place-name');
-const inputAddPhoto = document.querySelector('.popup-add__info_input-place-link');
+const inputAddName = document.querySelector('.popup_input_place-name');
+const inputAddPhoto = document.querySelector('.popup_input_place-link');
 
 // submit + addNewPlace
 
@@ -122,11 +122,8 @@ function addFormSubmitHandler(evt) {
   const newPlace = createPlace(inputAddName.value, inputAddPhoto.value);
   addPlaceListeners(newPlace);
   addPlace(newPlace);
-<<<<<<< HEAD
   popupClose(popupAdd);
-=======
   popupAdd.classList.remove('popup-add_open');
->>>>>>> 49d9a63a3a79657d22e5c472ff54775c841d25dc
   popupAddForm.reset();
 }
 popupAddForm.addEventListener('submit', addFormSubmitHandler);
