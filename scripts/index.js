@@ -6,8 +6,8 @@ const closeEdit = document.querySelector('.popup__close-button_edit');
 const profilePageName = document.querySelector('.profile__name');
 const profilePageTitle = document.querySelector('.profile__title');
 
-const inputProfileName = document.querySelector('.popup_input_profile-name');
-const inputProfileTitle = document.querySelector('.popup_input_profile-title');
+const inputProfileName = document.querySelector('.popup__info_input_profile-name');
+const inputProfileTitle = document.querySelector('.popup__info_input_profile-title');
 
 const popupEditForm = document.querySelector('.popup__form_edit');
 
@@ -16,8 +16,8 @@ const popupEditForm = document.querySelector('.popup__form_edit');
 const popupAdd = document.querySelector('.popup_add');
 const addButton = document.querySelector('.profile__add-button');
 const popupAddForm = document.querySelector('.popup__form_add');
-const inputAddName = document.querySelector('.popup_input_place-name');
-const inputAddPhoto = document.querySelector('.popup_input_place-link');
+const inputAddName = document.querySelector('.popup__info_input_place-name');
+const inputAddPhoto = document.querySelector('.popup__info_input_place-link');
 
 const closeAdd = document.querySelector('.popup__close-button_add');
 
