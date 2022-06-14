@@ -32,6 +32,8 @@ const popupPhoto = document.querySelector('.popup_photo');
 
 const closePhoto = document.querySelector('.popup__close-button_photo');
 
+const popupPhotoName = document.querySelector('.popup__photo-name');
+
 // activate buttons for newPlaces
 
 const places = document.querySelectorAll('.place');
@@ -55,18 +57,19 @@ function createPlace(name, link) {
   const newPlace = newPlaceTemplate.cloneNode(true);
   const placeName = newPlace.querySelector('.place__name');
   const placeImage = newPlace.querySelector('.place__photo');
-  const placePhoto = newPlace.querySelector('.place__photo');
+  const placePhoto = placeImage;
   placeName.textContent = name;
   placeImage.alt = name;
   placePhoto.src = link;
+  addPlaceListeners(newPlace);
 
   return newPlace
 }
 
-// addPlace to the page card = place
+// addPlace to the page; places = placesContainer
 
-function addPlace(card) {
-  placesContainer.prepend(card);
+function addPlace(places, place) {
+  places.prepend(place);
 }
 
 //likeButton, deleteButton & popupPhoto
@@ -74,7 +77,7 @@ function addPlace(card) {
 function addPlaceListeners(place) {
   const deletePlaceButton = place.querySelector('.place__delete-button');
   deletePlaceButton.addEventListener('click', (evt) => {
-    evt.target.closest("article").remove();
+    evt.target.closest('.place').remove();
   } 
   );
   const likeButton = place.querySelector('.place__like-button');
@@ -83,7 +86,6 @@ function addPlaceListeners(place) {
   }
   );
   const placeImage = place.querySelector('.place__photo');
-  const popupPhotoName = document.querySelector('.popup__photo-name');
   const placeName = place.querySelector('.place__name');
   placeImage.addEventListener('click', () => {
     openPopup(popupPhoto);
@@ -98,8 +100,7 @@ function addPlaceListeners(place) {
 
 for (let i = 0; i < initialPlaces.length; i++) {
   const place = createPlace(initialPlaces[i].name, initialPlaces[i].link);
-  addPlaceListeners(place);
-  addPlace(place);
+  addPlace(placesContainer, place);
 }
 
 // open + close popupAdd buttons
@@ -125,8 +126,7 @@ closePhoto.addEventListener('click', () => {
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
   const newPlace = createPlace(inputAddName.value, inputAddPhoto.value);
-  addPlaceListeners(newPlace);
-  addPlace(newPlace);
+  addPlace(placesContainer, newPlace);
   closePopup(popupAdd);
   popupAddForm.reset();
 }
