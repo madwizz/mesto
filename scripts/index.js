@@ -128,7 +128,7 @@ for (let i = 0; i < initialPlaces.length; i++) {
   addPlace(placesContainer, place);
 }
 
-// open + close popupAdd buttons
+// open + close popupAdd buttons + validation before input
 
 addButton.addEventListener("click", () => {
   openPopup(popupAdd);
@@ -155,7 +155,7 @@ function addFormSubmitHandler(evt) {
 }
 popupAddForm.addEventListener("submit", addFormSubmitHandler);
 
-// open + close popupEdit buttons
+// open + close popupEdit buttons + validation w/ profile value
 
 editProfileButton.addEventListener("click", () => {
   openPopup(popupEdit);

@@ -1,5 +1,3 @@
-// проверить стили ошибок
-
 function validateForm(formElement) {
   const submitBtn = formElement.querySelector(".popup__submit-button");
   if (!formElement.checkValidity()) {
@@ -13,14 +11,14 @@ function validateForm(formElement) {
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add("form__info_invalid");
+  inputElement.classList.add("popup__info_invalid");
   errorElement.textContent = errorMessage;
   errorElement.classList.add("popup__error-message_active");
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove("form__info_invalid");
+  inputElement.classList.remove("popup__info_invalid");
   errorElement.classList.remove("popup__error-message_active");
   errorElement.textContent = "";
 };

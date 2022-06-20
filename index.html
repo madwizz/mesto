@@ -1,127 +1,187 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta name="description" content="Проект соцсети о местах в России на Яндекс.Практикуме">
-  <meta name="author" content="Сапегин Дмитрий">
-  <meta name="keywords" content="Россия, место, практикум, яндекс, проект">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Место</title>
-</head>
-<body class="root">
-  <header class="header">
-    <img class="header__logo" src="./images/header-logo.svg" alt="логотип-сайта-место-россия">
-  </header>
-  <main class="main">
-    <section class="profile">
-      <div class="profile__container">
-        <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="аватар">
-        <div class="profile__info">
-          <div class="profile__row">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button">
-              <img src="./images/pencil.svg" alt="профиль-кнопка-редактировать">
-            </button>
+  <head>
+    <meta
+      name="description"
+      content="Проект соцсети о местах в России на Яндекс.Практикуме"
+    />
+    <meta name="author" content="Сапегин Дмитрий" />
+    <meta name="keywords" content="Россия, место, практикум, яндекс, проект" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body class="root">
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/header-logo.svg"
+        alt="логотип-сайта-место-россия"
+      />
+    </header>
+    <main class="main">
+      <section class="profile">
+        <div class="profile__container">
+          <img
+            class="profile__avatar"
+            src="./images/profile-avatar.jpg"
+            alt="аватар"
+          />
+          <div class="profile__info">
+            <div class="profile__row">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button" type="button">
+                <img
+                  src="./images/pencil.svg"
+                  alt="профиль-кнопка-редактировать"
+                />
+              </button>
+            </div>
+            <p class="profile__title">Исследователь океана</p>
           </div>
-          <p class="profile__title">Исследователь океана</p>
         </div>
+        <button class="profile__add-button" type="button">
+          <img src="./images/plus-button.svg" alt="профиль-кнопка-добавить" />
+        </button>
+      </section>
+
+      <section class="places"></section>
+    </main>
+    <footer class="footer">&copy; 2022 Mesto Russia</footer>
+
+    <section class="popup popup_edit">
+      <div class="popup__content">
+        <button
+          class="popup__close-button popup__close-button_edit"
+          type="button"
+        >
+          <img
+            class="popup__close-button-image"
+            src="./images/close-button.svg"
+            alt="попап-кнопка-закрытия"
+          />
+        </button>
+        <form name="edit-form" class="popup__form popup__form_edit" novalidate>
+          <h3 class="popup__title popup__title_edit">Редактировать профиль</h3>
+          <label class="popup__label" for="profile-name">
+            <input
+              id="profile-name"
+              name="profile-name"
+              placeholder="Имя"
+              type="text"
+              required
+              minlength="2"
+              maxlength="40"
+              class="popup__info popup__info_input_profile-name"
+            />
+            <div class="popup__error-message-container">
+              <span id="profile-name-error" class="popup__error-message"></span>
+            </div>
+          </label>
+          <label class="popup__label" for="profile-title">
+            <input
+              id="profile-title"
+              name="profile-title"
+              placeholder="О себе"
+              type="text"
+              required
+              minlength="2"
+              maxlength="200"
+              class="popup__info popup__info_input_profile-title"
+            />
+            <div class="popup__error-message-container">
+              <span id="profile-title-error" class="popup__error-message">
+              </span>
+            </div>
+          </label>
+          <button id="editbtn" class="popup__submit-button" type="submit">
+            Сохранить
+          </button>
+        </form>
       </div>
-      <button class="profile__add-button" type="button">
-        <img src="./images/plus-button.svg" alt="профиль-кнопка-добавить">
-      </button>
     </section>
 
-    <section class="places"></section>
-
-  </main>
-  <footer class="footer">&copy; 2022 Mesto Russia</footer>
-
-  <section class="popup popup_edit">
-    <div class="popup__content">
-      <button class="popup__close-button popup__close-button_edit" type="button">
-        <img class="popup__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
-      </button>
-      <form name="edit-form" class="popup__form popup__form_edit" novalidate>
-        <h3 class="popup__title popup__title_edit">Редактировать профиль</h3>
-        <label class="popup__label" for="profile-name">
-          <input 
-          id="profile-name" 
-          name="profile-name" 
-          placeholder="Имя" 
-          type="text" required minlength="2" maxlength="40"
-          class="popup__info popup__info_input_profile-name">
-          <span id="profile-name-error" class="popup__error-message"></span>
-        </label>
-        <label class="popup__label" for="profile-title">
-          <input
-          id="profile-title" 
-          name="profile-title" 
-          placeholder="О себе" 
-          type="text" required minlength="2" maxlength="200"
-          class="popup__info popup__info_input_profile-title">
-          <span id="profile-title-error" class="popup__error-message"></span>
-        </label>
-        <button id="editbtn" class="popup__submit-button" type="submit">Сохранить</button>
-      </form>
-    </div>
-  </section>
-
-  <section class="popup popup_add">
-    <div class="popup__content">
-      <button class="popup__close-button popup__close-button_add" type="button">
-        <img class="popup__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
-      </button>
-      <form name="add-form" class="popup__form popup__form_add" novalidate>
-        <h3 class="popup__title popup__title_add">Новое место</h3>
-        <label class="popup__label" for="place-name">
-          <input 
-          id="place-name" 
-          name="place-name" 
-          placeholder="Название" 
-          type="text" required minlength="1" maxlength="30"
-          class="popup__info popup__info_input_place-name">
-          <span id="place-name-error" class="popup__error-message"></span>
-        </label>
-        <label class="popup__label" for="place-link">
-          <input 
-          id="place-link" 
-          name="place-link" 
-          placeholder="Ссылка на картинку" 
-          type="url" required
-          class="popup__info popup__info_input_place-link">
-          <span id="place-link-error" class="popup__error-message"></span>
-        </label>
-        <button id="addbtn" class="popup__submit-button" type="submit">Сохранить</button>
-      </form>
-    </div>
-  </section>
-
-  <section class="popup popup_photo">
-    <div class="popup__photo-content">
-      <button class="popup__close-button popup__close-button_photo" type="button">
-        <img class="popup__close-button-image" src="./images/close-button.svg" alt="попап-кнопка-закрытия">
-      </button>
-      <img class="popup__photo-image" src="#" alt="">
-      <p class="popup__photo-name"></p>
-    </div>
-  </section>
-
-  <template id="place">
-    <article class="place">
-      <img class="place__photo" src="#" alt="№">
-      <div class="place__info">
-        <h2 class="place__name"></h2>
-        <button class="place__like-button" type="button"></button>
+    <section class="popup popup_add">
+      <div class="popup__content">
+        <button
+          class="popup__close-button popup__close-button_add"
+          type="button"
+        >
+          <img
+            class="popup__close-button-image"
+            src="./images/close-button.svg"
+            alt="попап-кнопка-закрытия"
+          />
+        </button>
+        <form name="add-form" class="popup__form popup__form_add" novalidate>
+          <h3 class="popup__title popup__title_add">Новое место</h3>
+          <label class="popup__label" for="place-name">
+            <input
+              id="place-name"
+              name="place-name"
+              placeholder="Название"
+              type="text"
+              required
+              minlength="1"
+              maxlength="30"
+              class="popup__info popup__info_input_place-name"
+            />
+            <div class="popup__error-message-container">
+              <span id="place-name-error" class="popup__error-message"></span>
+            </div>
+          </label>
+          <label class="popup__label" for="place-link">
+            <input
+              id="place-link"
+              name="place-link"
+              placeholder="Ссылка на картинку"
+              type="url"
+              required
+              class="popup__info popup__info_input_place-link"
+            />
+            <div class="popup__error-message-container">
+              <span id="place-link-error" class="popup__error-message"></span>
+            </div>
+          </label>
+          <button id="addbtn" class="popup__submit-button" type="submit">
+            Сохранить
+          </button>
+        </form>
       </div>
-      <button class="place__delete-button" type="button"></button>
-    </article>
-  </template>
+    </section>
 
-  <script src="./scripts/initialPlaces.js"></script>
-  <script src="./scripts/validation.js"></script>
-  <script src="./scripts/index.js"></script>
+    <section class="popup popup_photo">
+      <div class="popup__photo-content">
+        <button
+          class="popup__close-button popup__close-button_photo"
+          type="button"
+        >
+          <img
+            class="popup__close-button-image"
+            src="./images/close-button.svg"
+            alt="попап-кнопка-закрытия"
+          />
+        </button>
+        <img class="popup__photo-image" src="#" alt="" />
+        <p class="popup__photo-name"></p>
+      </div>
+    </section>
 
-</body>
+    <template id="place">
+      <article class="place">
+        <img class="place__photo" src="#" alt="№" />
+        <div class="place__info">
+          <h2 class="place__name"></h2>
+          <button class="place__like-button" type="button"></button>
+        </div>
+        <button class="place__delete-button" type="button"></button>
+      </article>
+    </template>
+
+    <script src="./scripts/initialPlaces.js"></script>
+    <script src="./scripts/validation.js"></script>
+    <script src="./scripts/index.js"></script>
+  </body>
 </html>

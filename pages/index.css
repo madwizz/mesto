@@ -18,14 +18,15 @@
 @import url(../blocks/popup/__photo-content/popup__photo-content.css);
 @import url(../blocks/popup/__form/popup__form.css);
 
-@import url(../blocks/popup/__info/_invalid/popup__info_error.css);
-@import url(../blocks/popup/__info/_valid/popup__info_valid.css);
-
+@import url(../blocks/popup/__error-message-container/popup__error-message-container.css);
 @import url(../blocks/popup/__error-message/popup__error-message.css);
-@import url(../blocks/popup/__error-message/_active/popup__error-message_acive.css);
+@import url(../blocks/popup/__error-message/_active/popup__error-message_active.css);
 
 @import url(../blocks/popup/__info/popup__info.css);
 @import url(../blocks/popup/__label/popup__label.css);
+
+@import url(../blocks/popup/__info/_invalid/popup__info_invalid.css);
+@import url(../blocks/popup/__info/_valid/popup__info_valid.css);
 
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css);
