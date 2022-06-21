@@ -114,25 +114,32 @@ function addPlaceListeners(place) {
   const placeImage = place.querySelector(".place__photo");
   const placeName = place.querySelector(".place__name");
   placeImage.addEventListener("click", () => {
-    openPopup(popupPhoto);
     popupImage.src = placeImage.src;
     popupImage.alt = placeImage.alt;
     popupPhotoName.textContent = placeName.textContent;
+    openPopup(popupPhoto);
   });
 }
 
-// addPlace six times on start-up
+// addPlace six times on start-up // Лучше использовать метод массива forEach в таких случаях
 
 for (let i = 0; i < initialPlaces.length; i++) {
   const place = createPlace(initialPlaces[i].name, initialPlaces[i].link);
   addPlace(placesContainer, place);
 }
 
+// что тут брать за аргумент?
+
+// initialPlaces.forEach(() =>{
+//   const place = createPlace(initialPlaces[i].name, initialPlaces[i].link);
+//   addPlace(placesContainer, place);
+// })
+
 // open + close popupAdd buttons + validation before input
 
 addButton.addEventListener("click", () => {
   openPopup(popupAdd);
-  validateForm(popupAdd.querySelector(".popup__form"));
+  validateForm(popupAdd.querySelector(settings.formSelector), settings);
 });
 closeAdd.addEventListener("click", () => {
   closePopup(popupAdd);
@@ -158,10 +165,10 @@ popupAddForm.addEventListener("submit", addFormSubmitHandler);
 // open + close popupEdit buttons + validation w/ profile value
 
 editProfileButton.addEventListener("click", () => {
-  openPopup(popupEdit);
   inputProfileName.value = profilePageName.textContent;
   inputProfileTitle.value = profilePageTitle.textContent;
-  validateForm(popupEdit.querySelector(".popup__form"));
+  validateForm(popupEdit.querySelector(settings.formSelector), settings);
+  openPopup(popupEdit);
 });
 closeEdit.addEventListener("click", () => {
   closePopup(popupEdit);
