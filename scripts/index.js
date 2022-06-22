@@ -121,19 +121,17 @@ function addPlaceListeners(place) {
   });
 }
 
-// addPlace six times on start-up // Лучше использовать метод массива forEach в таких случаях
-
+// addPlace six times on start-up //
+/*
 for (let i = 0; i < initialPlaces.length; i++) {
   const place = createPlace(initialPlaces[i].name, initialPlaces[i].link);
   addPlace(placesContainer, place);
 }
-
-// что тут брать за аргумент?
-
-// initialPlaces.forEach(() =>{
-//   const place = createPlace(initialPlaces[i].name, initialPlaces[i].link);
-//   addPlace(placesContainer, place);
-// })
+*/
+initialPlaces.forEach((initialPlaces) => {
+  const place = createPlace(initialPlaces.name, initialPlaces.link);
+  addPlace(placesContainer, place);
+});
 
 // open + close popupAdd buttons + validation before input
 
