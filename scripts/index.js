@@ -1,3 +1,8 @@
+import FormValidation from "./FormValidation.js";
+import Card from "./Card.js";
+import { initialPlaces } from "./initialPlaces.js";
+import { settings } from "./settings.js";
+
 // popupEdit
 
 const popupEdit = document.querySelector(".popup_edit");
@@ -50,6 +55,14 @@ const newPlaceTemplate = document.querySelector("#place").content;
 
 const popups = document.querySelectorAll(".popup");
 
+//
+
+const validEditForm = new FormValidation(settings, popupEditForm);
+validEditForm.enableValidation();
+
+const validAddForm = new FormValidation(settings, popupAddForm);
+validAddForm.enableValidation();
+
 // open + close popup
 
 const openPopup = (popup) => {
@@ -79,19 +92,13 @@ popups.forEach((popup) =>
   })
 );
 
-// createPlace
+// photo popup func
 
-function createPlace(name, link) {
-  const newPlace = newPlaceTemplate.cloneNode(true);
-  const placeName = newPlace.querySelector(".place__name");
-  const placeImage = newPlace.querySelector(".place__photo");
-  const placePhoto = placeImage;
-  placeName.textContent = name;
-  placeImage.alt = name;
-  placePhoto.src = link;
-  addPlaceListeners(newPlace);
-
-  return newPlace;
+function placeOpened(name, link) {
+  popupImage.src = link;
+  popupPhotoName.textContent = name;
+  popupImage.alt = name;
+  openPopup(popupPhoto);
 }
 
 // addPlace to the page; places = placesContainer
@@ -100,44 +107,18 @@ function addPlace(places, place) {
   places.prepend(place);
 }
 
-//likeButton, deleteButton & popupPhoto
+// load six places
 
-function addPlaceListeners(place) {
-  const deletePlaceButton = place.querySelector(".place__delete-button");
-  deletePlaceButton.addEventListener("click", (evt) => {
-    evt.target.closest(".place").remove();
-  });
-  const likeButton = place.querySelector(".place__like-button");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("place__like-button_active");
-  });
-  const placeImage = place.querySelector(".place__photo");
-  const placeName = place.querySelector(".place__name");
-  placeImage.addEventListener("click", () => {
-    popupImage.src = placeImage.src;
-    popupImage.alt = placeImage.alt;
-    popupPhotoName.textContent = placeName.textContent;
-    openPopup(popupPhoto);
-  });
-}
-
-// addPlace six times on start-up //
-/*
-for (let i = 0; i < initialPlaces.length; i++) {
-  const place = createPlace(initialPlaces[i].name, initialPlaces[i].link);
-  addPlace(placesContainer, place);
-}
-*/
-initialPlaces.forEach((initialPlaces) => {
-  const place = createPlace(initialPlaces.name, initialPlaces.link);
-  addPlace(placesContainer, place);
+initialPlaces.forEach((initialPlace) => {
+  const place = new Card(initialPlace, placeOpened);
+  place.generateCard();
+  addPlace(placesContainer, place.getElement());
 });
 
 // open + close popupAdd buttons + validation before input
 
 addButton.addEventListener("click", () => {
   openPopup(popupAdd);
-  validateForm(popupAdd.querySelector(settings.formSelector), settings);
 });
 closeAdd.addEventListener("click", () => {
   closePopup(popupAdd);
@@ -153,8 +134,15 @@ closePhoto.addEventListener("click", () => {
 
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
-  const newPlace = createPlace(inputAddName.value, inputAddPhoto.value);
-  addPlace(placesContainer, newPlace);
+  const newPlace = new Card(
+    {
+      name: inputAddName.value,
+      link: inputAddPhoto.value,
+    },
+    placeOpened
+  );
+  newPlace.generateCard();
+  addPlace(placesContainer, newPlace.getElement());
   closePopup(popupAdd);
   popupAddForm.reset();
 }
@@ -165,7 +153,6 @@ popupAddForm.addEventListener("submit", addFormSubmitHandler);
 editProfileButton.addEventListener("click", () => {
   inputProfileName.value = profilePageName.textContent;
   inputProfileTitle.value = profilePageTitle.textContent;
-  validateForm(popupEdit.querySelector(settings.formSelector), settings);
   openPopup(popupEdit);
 });
 closeEdit.addEventListener("click", () => {
