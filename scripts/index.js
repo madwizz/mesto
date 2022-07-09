@@ -72,6 +72,10 @@ const openPopup = (popup) => {
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEsc);
+  popupAddForm.reset();
+  validAddForm.resetValidation();
+  popupEditForm.reset();
+  validEditForm.resetValidation();
 };
 
 // close popup with esc key
@@ -94,7 +98,7 @@ popups.forEach((popup) =>
 
 // photo popup func
 
-function placeOpened(name, link) {
+function handleImageClick(name, link) {
   popupImage.src = link;
   popupPhotoName.textContent = name;
   popupImage.alt = name;
@@ -104,16 +108,35 @@ function placeOpened(name, link) {
 // addPlace to the page; places = placesContainer
 
 function addPlace(places, place) {
-  places.prepend(place);
+  const card = createPlace(place);
+  places.prepend(card);
+}
+
+// createPlace
+
+function createPlace(cardData) {
+  const card = new Card(cardData, handleImageClick);
+  return card.generateCard();
 }
 
 // load six places
 
 initialPlaces.forEach((initialPlace) => {
-  const place = new Card(initialPlace, placeOpened);
-  place.generateCard();
-  addPlace(placesContainer, place.getElement());
+  addPlace(placesContainer, initialPlace);
 });
+
+// + addNewPlace
+
+function addFormSubmitHandler(evt) {
+  evt.preventDefault();
+  addPlace(placesContainer, {
+    name: inputAddName.value,
+    link: inputAddPhoto.value,
+  });
+  closePopup(popupAdd);
+  popupAddForm.reset();
+  validAddForm.resetValidation();
+}
 
 // open + close popupAdd buttons + validation before input
 
@@ -130,22 +153,8 @@ closePhoto.addEventListener("click", () => {
   closePopup(popupPhoto);
 });
 
-// submit popupAdd button + addNewPlace
+// submit popupAdd button
 
-function addFormSubmitHandler(evt) {
-  evt.preventDefault();
-  const newPlace = new Card(
-    {
-      name: inputAddName.value,
-      link: inputAddPhoto.value,
-    },
-    placeOpened
-  );
-  newPlace.generateCard();
-  addPlace(placesContainer, newPlace.getElement());
-  closePopup(popupAdd);
-  popupAddForm.reset();
-}
 popupAddForm.addEventListener("submit", addFormSubmitHandler);
 
 // open + close popupEdit buttons + validation w/ profile value

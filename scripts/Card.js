@@ -1,8 +1,8 @@
 export default class Card {
-  constructor(data, placeOpened) {
-    this._name = data.name;
-    this._photo = data.link;
-    this._placeOpened = placeOpened;
+  constructor(cardData, handleImageClick) {
+    this._name = cardData.name;
+    this._photo = cardData.link;
+    this._handleImageClick = handleImageClick;
   }
 
   _getTemplate() {
@@ -19,8 +19,10 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
 
-    this._element.querySelector(".place__photo").src = this._photo;
-    this._element.querySelector(".place__photo").alt = this._name;
+    this._photoElement = this._element.querySelector(".place__photo");
+
+    this._photoElement.src = this._photo;
+    this._photoElement.alt = this._name;
     this._element.querySelector(".place__name").textContent = this._name;
 
     this._likeButton = this._element.querySelector(".place__like-button");
@@ -40,11 +42,9 @@ export default class Card {
       this._handleLikeButton();
     });
 
-    this._element
-      .querySelector(".place__photo")
-      .addEventListener("click", () => {
-        this._placeOpened(this._name, this._photo);
-      });
+    this._photoElement.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._photo);
+    });
   }
 
   _handleLikeButton() {

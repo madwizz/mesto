@@ -1,7 +1,6 @@
 export default class FormValidation {
   constructor(settings, formElement) {
     this._form = formElement;
-    console.log(settings.inputSelector);
     this._inputSelector = settings.inputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
@@ -11,7 +10,7 @@ export default class FormValidation {
       this._form.querySelectorAll(this._inputSelector)
     );
     this._buttonElement = formElement.querySelector(this._submitButtonSelector);
-    this._checkFormValidity();
+    this._toggleButtonState();
   }
 
   _showInputError(inputElement) {
@@ -36,7 +35,7 @@ export default class FormValidation {
     }
   }
 
-  _checkFormValidity() {
+  _toggleButtonState() {
     if (!this._form.checkValidity()) {
       this._buttonElement.classList.add(this._inactiveButtonClass);
       this._buttonElement.setAttribute("disabled", "true");
@@ -53,11 +52,22 @@ export default class FormValidation {
       });
     });
     this._form.addEventListener("input", () => {
-      this._checkFormValidity();
+      this._toggleButtonState();
+    });
+  }
+
+  resetValidation() {
+    this._toggleButtonState();
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
     });
   }
 
   enableValidation() {
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
     this._setEventListeners();
   }
 }
