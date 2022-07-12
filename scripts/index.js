@@ -49,7 +49,7 @@ const places = document.querySelectorAll(".place");
 
 // new place template
 
-const newPlaceTemplate = document.querySelector("#place").content;
+const newPlaceTemplate = document.querySelector("#place");
 
 // all popups for overlay close click
 
@@ -72,10 +72,6 @@ const openPopup = (popup) => {
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEsc);
-  popupAddForm.reset();
-  validAddForm.resetValidation();
-  popupEditForm.reset();
-  validEditForm.resetValidation();
 };
 
 // close popup with esc key
@@ -115,7 +111,7 @@ function addPlace(places, place) {
 // createPlace
 
 function createPlace(cardData) {
-  const card = new Card(cardData, handleImageClick);
+  const card = new Card(cardData, handleImageClick, "#place");
   return card.generateCard();
 }
 
@@ -145,6 +141,8 @@ addButton.addEventListener("click", () => {
 });
 closeAdd.addEventListener("click", () => {
   closePopup(popupAdd);
+  popupAddForm.reset();
+  validAddForm.resetValidation();
 });
 
 // popupPhotoClose
@@ -166,6 +164,8 @@ editProfileButton.addEventListener("click", () => {
 });
 closeEdit.addEventListener("click", () => {
   closePopup(popupEdit);
+  popupEditForm.reset();
+  validEditForm.resetValidation();
 });
 
 // submit popupEdit button
