@@ -1,7 +1,7 @@
 export default class UserInfo {
-  constructor({ profileName, profileTitle }) {
-    this._profileName = profileName;
-    this._profileTitle = profileTitle;
+  constructor({ profileNameSelector, profileTitleSelector }) {
+    this._profileName = profileNameSelector;
+    this._profileTitle = profileTitleSelector;
   }
   getUserInfo() {
     const userInfo = {
@@ -15,6 +15,3 @@ export default class UserInfo {
     this._profileTitle.textContent = profileInfo["profile-title"];
   }
 }
-
-// const profilePageName = document.querySelector(".profile__name");
-// const profilePageTitle = document.querySelector(".profile__title");

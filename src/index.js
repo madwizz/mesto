@@ -10,23 +10,23 @@ import "./index.css";
 
 import {
   popupEdit,
-  editProfileButton,
-  closeEdit,
+  profileEditButton,
+  popupCloseEdit,
   profilePageName,
   profilePageTitle,
   inputProfileName,
   inputProfileTitle,
   popupEditForm,
   popupAdd,
-  addButton,
+  profileAddButton,
   popupAddForm,
   // inputAddName,
   // inputAddPhoto,
-  closeAdd,
+  popupCloseAdd,
   placesContainer,
   // popupImage,
   popupPhoto,
-  closePhoto,
+  popupClosePhoto,
   // popupPhotoName,
   // popups,
 } from "../scripts/variables.js";
@@ -36,13 +36,6 @@ import {
 function handleImageClick(name, src) {
   popupImage.open(name, src);
 }
-
-// addPlace to the page; places = placesContainer
-
-// function addPlace(places, place) {
-//   const card = createPlace(place);
-//   places.prepend(card);
-// }
 
 // createPlace
 
@@ -67,76 +60,52 @@ const renderInitialPlaces = new Section(
 renderInitialPlaces.renderItem();
 
 const profileInfo = new UserInfo({
-  profileName: profilePageName,
-  profileTitle: profilePageTitle,
+  profileNameSelector: profilePageName,
+  profileTitleSelector: profilePageTitle,
 });
 
 const profileSubmit = (userInfo) => {
-  console.log(userInfo);
   profileInfo.setUserInfo(userInfo);
 };
 
 function placeSubmit(obj) {
   const place = createPlace(obj);
   renderInitialPlaces.addItem(place);
-  popupAddPlace.close();
 }
 
-// + addNewPlace
-
-// function addFormSubmitHandler(evt) {
-//   evt.preventDefault();
-//   addPlace(placesContainer, {
-//     name: inputAddName.value,
-//     link: inputAddPhoto.value,
-//   });
-//   closePopup(popupAdd);
-//   popupAddForm.reset();
-//   validAddForm.resetValidation();
-// }
-
-// open + close popupAdd buttons + validation before input
-
-addButton.addEventListener("click", () => {
+profileAddButton.addEventListener("click", () => {
   popupAddPlace.open();
-});
-closeAdd.addEventListener("click", () => {
-  popupAddPlace.close();
-  popupAddForm.reset();
   validAddForm.resetValidation();
 });
+// popupCloseAdd.addEventListener("click", () => {
+//   popupAddPlace.close();
+// });
 
 // popupPhotoClose
 
-closePhoto.addEventListener("click", () => {
-  popupImage.close();
-});
-
-// submit popupAdd button
-
-// popupAddForm.addEventListener("submit", placeSubmit);
+// popupClosePhoto.addEventListener("click", () => {
+//   popupImage.close();
+// });
 
 // open + close popupEdit buttons + validation w/ profile value
 
-editProfileButton.addEventListener("click", () => {
-  inputProfileName.value = profilePageName.textContent;
-  inputProfileTitle.value = profilePageTitle.textContent;
+// profileEditButton.addEventListener("click", () => {
+//   inputProfileName.value = profilePageName.textContent;
+//   inputProfileTitle.value = profilePageTitle.textContent;
+//   popupProfile.open();
+// });
+
+profileEditButton.addEventListener("click", () => {
+  const { profileName, profileTitle } = profileInfo.getUserInfo();
+  inputProfileName.value = profileName;
+  inputProfileTitle.value = profileTitle;
   popupProfile.open();
 });
-closeEdit.addEventListener("click", () => {
-  popupProfile.close();
+
+popupCloseEdit.addEventListener("click", () => {
   popupEditForm.reset();
   validEditForm.resetValidation();
 });
-
-// submit popupEdit button
-
-// popupEditForm.addEventListener("submit", (evt) => {
-//   evt.preventDefault();
-//   profilePageName.textContent = inputProfileName.value;
-//   profilePageTitle.textContent = inputProfileTitle.value;
-//   popupProfile.close();
-// });
 
 const validEditForm = new FormValidation(settings, popupEditForm);
 validEditForm.enableValidation();

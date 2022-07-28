@@ -1,6 +1,5 @@
 export default class Card {
   constructor(cardData, handleImageClick, cardSelector) {
-    console.log(cardData);
     this._name = cardData["place-name"];
     this._photo = cardData["place-link"];
     this._handleImageClick = handleImageClick;
@@ -51,7 +50,7 @@ export default class Card {
   }
 
   _handleDeleteButton() {
-    console.log(this._element);
     this._element.remove();
+    this._element = null;
   }
 }
