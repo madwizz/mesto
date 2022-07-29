@@ -1,12 +1,12 @@
-import FormValidation from "../scripts/FormValidation.js";
-import Card from "../scripts/Card.js";
-import { initialPlaces } from "../scripts/initialPlaces.js";
-import { settings } from "../scripts/settings.js";
-import Section from "../scripts/Section.js";
-import UserInfo from "../scripts/UserInfo.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import "./index.css";
+import FormValidation from "../components/FormValidation.js";
+import Card from "../components/Card.js";
+import { initialPlaces } from "../components/initialPlaces.js";
+import { settings } from "../components/settings.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import "../pages/index.css";
 
 import {
   popupEdit,
@@ -20,16 +20,9 @@ import {
   popupAdd,
   profileAddButton,
   popupAddForm,
-  // inputAddName,
-  // inputAddPhoto,
-  popupCloseAdd,
   placesContainer,
-  // popupImage,
   popupPhoto,
-  popupClosePhoto,
-  // popupPhotoName,
-  // popups,
-} from "../scripts/variables.js";
+} from "../components/variables.js";
 
 // photo popup func
 
@@ -77,23 +70,6 @@ profileAddButton.addEventListener("click", () => {
   popupAddPlace.open();
   validAddForm.resetValidation();
 });
-// popupCloseAdd.addEventListener("click", () => {
-//   popupAddPlace.close();
-// });
-
-// popupPhotoClose
-
-// popupClosePhoto.addEventListener("click", () => {
-//   popupImage.close();
-// });
-
-// open + close popupEdit buttons + validation w/ profile value
-
-// profileEditButton.addEventListener("click", () => {
-//   inputProfileName.value = profilePageName.textContent;
-//   inputProfileTitle.value = profilePageTitle.textContent;
-//   popupProfile.open();
-// });
 
 profileEditButton.addEventListener("click", () => {
   const { profileName, profileTitle } = profileInfo.getUserInfo();
