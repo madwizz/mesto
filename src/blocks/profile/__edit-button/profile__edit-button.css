@@ -5,7 +5,7 @@
   transition: opacity 0.3 ease;
   background-color: transparent;
   border: none;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
 }
 .profile__edit-button:hover {
   cursor: pointer;

@@ -51,6 +51,11 @@
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
+@import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
+@import url(../blocks/popup/__close-button/_avatar/popup__close-button_avatar.css);
+@import url(../blocks/popup/__title/_avatar/popup__title_avatar.css);
+
 @import url(../blocks/places/places.css);
 
 @import url(../blocks/place/place.css);

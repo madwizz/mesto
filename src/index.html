@@ -23,11 +23,14 @@
     <main class="main">
       <section class="profile">
         <div class="profile__container">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/profile-avatar.jpg')%>"
-            alt="аватар"
-          />
+          <div class="profile__avatar-container">
+            <img
+              class="profile__avatar"
+              src="<%=require('./images/profile-avatar.jpg')%>"
+              alt="аватар"
+            />
+            <button class="profile__avatar-button"></button>
+          </div>
           <div class="profile__info">
             <div class="profile__row">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -171,6 +174,44 @@
       </div>
     </section>
 
+    <section class="popup popup_avatar">
+      <div class="popup__content">
+        <button
+          class="popup__close-button popup__close-button_avatar"
+          type="button"
+        >
+          <img
+            class="popup__close-button-avatar"
+            src="<%=require('./images/close-button.svg')%>"
+            alt="попап-кнопка-закрытия"
+          />
+        </button>
+        <form
+          name="avatar-form"
+          class="popup__form popup__form_avatar"
+          novalidate
+        >
+          <h3 class="popup__title popup__title_avatar">Обновить аватар</h3>
+          <label class="popup__label" for="avatar">
+            <input
+              id="avatar"
+              name="avatar"
+              placeholder="Ссылка на картинку"
+              type="url"
+              required
+              class="popup__info popup__info_input_avatar"
+            />
+            <div class="popup__error-message-container">
+              <span id="avatar-error" class="popup__error-message"></span>
+            </div>
+          </label>
+          <button id="avatarbtn" class="popup__submit-button" type="submit">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+
     <template id="place">
       <article class="place">
         <img class="place__photo" src="#" alt="№" />
@@ -181,7 +222,5 @@
         <button class="place__delete-button" type="button"></button>
       </article>
     </template>
-
-    <!-- <script type="module" src="./pages/index.js"></script> -->
   </body>
 </html>

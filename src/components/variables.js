@@ -1,3 +1,14 @@
+// popupAvatar
+export const profileAvatar = ".profile__avatar";
+export const profileAvatarButton = document.querySelector(
+  ".profile__avatar-button"
+);
+export const popupAvatar = ".popup_avatar";
+export const popupCloseAvatar = document.querySelector(
+  ".popup__close-button_avatar"
+);
+export const popupAvatarForm = document.querySelector(".popup__form_avatar");
+
 // popupEdit
 
 export const popupEdit = ".popup_edit";

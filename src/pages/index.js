@@ -22,6 +22,11 @@ import {
   popupAddForm,
   placesContainer,
   popupPhoto,
+  popupAvatar,
+  profileAvatarButton,
+  popupCloseAvatar,
+  popupAvatarForm,
+  profileAvatar,
 } from "../components/variables.js";
 
 // photo popup func
@@ -55,6 +60,7 @@ renderInitialPlaces.renderItem();
 const profileInfo = new UserInfo({
   profileNameSelector: profilePageName,
   profileTitleSelector: profilePageTitle,
+  profileAvatarSelector: profileAvatar,
 });
 
 const profileSubmit = (userInfo) => {
@@ -65,6 +71,10 @@ function placeSubmit(obj) {
   const place = createPlace(obj);
   renderInitialPlaces.addItem(place);
 }
+
+const avatarSubmit = (avatarInfo) => {
+  profileInfo.setUserAvatar(avatarInfo);
+};
 
 profileAddButton.addEventListener("click", () => {
   popupAddPlace.open();
@@ -83,17 +93,36 @@ popupCloseEdit.addEventListener("click", () => {
   validEditForm.resetValidation();
 });
 
-const validEditForm = new FormValidation(settings, popupEditForm);
-validEditForm.enableValidation();
+profileAvatarButton.addEventListener("click", () => {
+  popupAvatarEdit.open();
+  validAvatarForm.resetValidation();
+});
 
-const validAddForm = new FormValidation(settings, popupAddForm);
-validAddForm.enableValidation();
+// edit
 
 const popupProfile = new PopupWithForm(popupEdit, profileSubmit);
 popupProfile.setEventListeners();
 
-const popupImage = new PopupWithImage(popupPhoto);
-popupImage.setEventListeners();
+const validEditForm = new FormValidation(settings, popupEditForm);
+validEditForm.enableValidation();
+
+// add
 
 const popupAddPlace = new PopupWithForm(popupAdd, placeSubmit);
 popupAddPlace.setEventListeners();
+
+const validAddForm = new FormValidation(settings, popupAddForm);
+validAddForm.enableValidation();
+
+// photo
+
+const popupImage = new PopupWithImage(popupPhoto);
+popupImage.setEventListeners();
+
+// avatar
+
+const popupAvatarEdit = new PopupWithForm(popupAvatar, avatarSubmit);
+popupAvatarEdit.setEventListeners();
+
+const validAvatarForm = new FormValidation(settings, popupAvatarForm);
+validAvatarForm.enableValidation();
