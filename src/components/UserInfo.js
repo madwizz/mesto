@@ -12,14 +12,17 @@ export default class UserInfo {
     const userInfo = {
       profileName: this._profileName.textContent,
       profileTitle: this._profileTitle.textContent,
+      profileAvatar: this._profileAvatar.src,
     };
     return userInfo;
   }
   setUserInfo(profileInfo) {
-    this._profileName.textContent = profileInfo["profile-name"];
-    this._profileTitle.textContent = profileInfo["profile-title"];
+    if (profileInfo["profile-name"])
+      this._profileName.textContent = profileInfo["profile-name"];
+    if (profileInfo["profile-title"])
+      this._profileTitle.textContent = profileInfo["profile-title"];
   }
   setUserAvatar(avatarInfo) {
-    this._profileAvatar.src = avatarInfo["avatar"];
+    if (avatarInfo["avatar"]) this._profileAvatar.src = avatarInfo["avatar"];
   }
 }

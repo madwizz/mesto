@@ -37,6 +37,9 @@ export default class Popup {
       if (evt.target.classList.contains("popup__close-button-avatar")) {
         this.close();
       }
+      if (evt.target.classList.contains("popup__close-button-delete")) {
+        this.close();
+      }
     });
   }
 }

@@ -212,12 +212,40 @@
       </div>
     </section>
 
+    <section class="popup popup_delete">
+      <div class="popup__content">
+        <button
+          class="popup__close-button popup__close-button_delete"
+          type="button"
+        >
+          <img
+            class="popup__close-button-delete"
+            src="<%=require('./images/close-button.svg')%>"
+            alt="попап-кнопка-закрытия"
+          />
+        </button>
+        <form
+          name="avatar-form"
+          class="popup__form popup__form_delete"
+          novalidate
+        >
+          <h3 class="popup__title popup__title_delete">Вы уверены?</h3>
+          <button id="deletebtn" class="popup__submit-button" type="submit">
+            Да
+          </button>
+        </form>
+      </div>
+    </section>
+
     <template id="place">
       <article class="place">
         <img class="place__photo" src="#" alt="№" />
         <div class="place__info">
           <h2 class="place__name"></h2>
-          <button class="place__like-button" type="button"></button>
+          <div class="place__like-container">
+            <button class="place__like-button" type="button"></button>
+            <p class="place__likes-count">1</p>
+          </div>
         </div>
         <button class="place__delete-button" type="button"></button>
       </article>

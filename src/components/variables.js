@@ -1,4 +1,16 @@
+// popupDelete
+
+export const deletePlaceButton = document.querySelectorAll(
+  ".place__delete-button"
+);
+export const popupDelete = ".popup_delete";
+export const popupCloseDelete = document.querySelector(
+  ".popup__close-button_avatar"
+);
+export const popupDeleteForm = document.querySelector(".popup__form_avatar");
+
 // popupAvatar
+
 export const profileAvatar = ".profile__avatar";
 export const profileAvatarButton = document.querySelector(
   ".profile__avatar-button"
