@@ -31,8 +31,8 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: userInfo.profileName,
-        about: userInfo.profileTitle,
+        name: userInfo["profile-name"],
+        about: userInfo["profile-title"],
       }),
     }).then(this._handleResponse);
     return this._setUserInfo;
@@ -43,7 +43,7 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: userInfo.avatar,
+        avatar: userInfo["avatar"],
       }),
     }).then(this._handleResponse);
     return this._avatar;

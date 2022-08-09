@@ -105,8 +105,19 @@ const profileInfo = new UserInfo({
   profileAvatarSelector: profileAvatar,
 });
 
+// const profileSubmit = (userInfo) => {
+//   profileInfo.setUserInfo(userInfo);
+// };
+
 const profileSubmit = (userInfo) => {
-  profileInfo.setUserInfo(userInfo);
+  popupProfile.renderLoading(true);
+  return api
+    .setUserInfo(userInfo)
+    .then((res) => {
+      profileInfo.setUserInfo(res);
+      popupProfile.close();
+    })
+    .catch((err) => console.log(err));
 };
 
 // function placeSubmit(obj) {
@@ -119,10 +130,8 @@ const placeSubmit = (cardData) => {
   return api
     .newCard(cardData)
     .then((cardData) => {
-      console.log(cardData);
       const cardElement = createPlace(cardData);
       renderInitialPlaces.addItem(cardElement);
-
       // renderInitialPlaces.addItem(createPlace(cardData));
       popupAdd.close();
     })
@@ -160,9 +169,9 @@ profileAddButton.addEventListener("click", () => {
 });
 
 profileEditButton.addEventListener("click", () => {
-  const { profileName, profileTitle } = profileInfo.getUserInfo();
-  inputProfileName.value = profileName;
-  inputProfileTitle.value = profileTitle;
+  const userInfo = profileInfo.getUserInfo();
+  inputProfileName.value = userInfo.name;
+  inputProfileTitle.value = userInfo.about;
   popupProfile.open();
 });
 

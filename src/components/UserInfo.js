@@ -10,19 +10,17 @@ export default class UserInfo {
   }
   getUserInfo() {
     const userInfo = {
-      profileName: this._profileName.textContent,
-      profileTitle: this._profileTitle.textContent,
-      profileAvatar: this._profileAvatar.src,
+      name: this._profileName.textContent,
+      about: this._profileTitle.textContent,
+      avatar: this._profileAvatar.src,
     };
     return userInfo;
   }
   setUserInfo(profileInfo) {
-    if (profileInfo["profile-name"])
-      this._profileName.textContent = profileInfo["profile-name"];
-    if (profileInfo["profile-title"])
-      this._profileTitle.textContent = profileInfo["profile-title"];
+    if (profileInfo.name) this._profileName.textContent = profileInfo.name;
+    if (profileInfo.about) this._profileTitle.textContent = profileInfo.about;
   }
   setUserAvatar(avatarInfo) {
-    if (avatarInfo["avatar"]) this._profileAvatar.src = avatarInfo["avatar"];
+    if (avatarInfo.avatar) this._profileAvatar.src = avatarInfo.avatar;
   }
 }
