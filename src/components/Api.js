@@ -31,8 +31,8 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: userInfo["profile-name"],
-        about: userInfo["profile-title"],
+        name: userInfo.name,
+        about: userInfo.about,
       }),
     }).then(this._handleResponse);
     return this._setUserInfo;
@@ -43,7 +43,7 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: userInfo["avatar"],
+        avatar: userInfo.avatar,
       }),
     }).then(this._handleResponse);
     return this._avatar;
@@ -66,6 +66,7 @@ export default class Api {
   }
 
   newCard(cardInfo) {
+    console.log(cardInfo);
     this._newCard = fetch(`${this._host}/cards`, {
       method: "POST",
       headers: this._headers,

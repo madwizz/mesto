@@ -71,7 +71,7 @@ const createPlace = (cardData) => {
         .addLike(cardData)
         .then((res) => {
           card.handleLikesCount(res);
-          card.addLike();
+          card.handleLikeAdd();
         })
         .catch((err) => console.log(err));
     },
@@ -80,7 +80,7 @@ const createPlace = (cardData) => {
         .removeLike(cardData)
         .then((res) => {
           card.handleLikesCount(res);
-          card.removeLike();
+          card.handleLikeRemove();
         })
         .catch((err) => console.log(err));
     }
@@ -113,8 +113,8 @@ const profileSubmit = (userInfo) => {
   popupProfile.renderLoading(true);
   return api
     .setUserInfo(userInfo)
-    .then((res) => {
-      profileInfo.setUserInfo(res);
+    .then((userInfo) => {
+      profileInfo.setUserInfo(userInfo);
       popupProfile.close();
     })
     .catch((err) => console.log(err));
@@ -133,7 +133,7 @@ const placeSubmit = (cardData) => {
       const cardElement = createPlace(cardData);
       renderInitialPlaces.addItem(cardElement);
       // renderInitialPlaces.addItem(createPlace(cardData));
-      popupAdd.close();
+      popupAddPlace.close();
     })
     .catch((err) => {
       console.log(err);
@@ -169,16 +169,17 @@ profileAddButton.addEventListener("click", () => {
 });
 
 profileEditButton.addEventListener("click", () => {
+  popupProfile.open();
+  validEditForm.resetValidation();
   const userInfo = profileInfo.getUserInfo();
   inputProfileName.value = userInfo.name;
   inputProfileTitle.value = userInfo.about;
-  popupProfile.open();
 });
 
-popupCloseEdit.addEventListener("click", () => {
-  popupEditForm.reset();
-  validEditForm.resetValidation();
-});
+// popupCloseEdit.addEventListener("click", () => {
+//   popupEditForm.reset();
+//   validEditForm.resetValidation();
+// });
 
 profileAvatarButton.addEventListener("click", () => {
   popupAvatarEdit.open();
@@ -196,7 +197,7 @@ validEditForm.enableValidation();
 // add
 
 const popupAddPlace = new PopupWithForm(popupAdd, placeSubmit);
-popupAddPlace.setEventListeners();
+popupAddPlace.setEventListenersCard();
 
 const validAddForm = new FormValidation(settings, popupAddForm);
 validAddForm.enableValidation();
@@ -226,7 +227,7 @@ let userId;
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then((value) => {
     userId = value[1]._id;
-    renderInitialPlaces.renderItems(value[0]);
+    renderInitialPlaces.renderItems(value[0].reverse());
     profileInfo.setUserInfo(value[1]);
   })
   .catch((err) => {

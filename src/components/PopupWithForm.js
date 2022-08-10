@@ -24,8 +24,22 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
       const inputValues = this._getInputValues();
       this._submitHandler({
-        name: inputValues["place-name"],
+        name: inputValues["profile-name"],
+        about: inputValues["profile-title"],
+        avatar: inputValues["avatar"],
+      });
+      this.close();
+    });
+  }
+
+  setEventListenersCard() {
+    super.setEventListeners();
+    this._popup.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      const inputValues = this._getInputValues();
+      this._submitHandler({
         link: inputValues["place-link"],
+        name: inputValues["place-name"],
       });
       this.close();
     });
