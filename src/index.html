@@ -61,19 +61,13 @@
         <button
           class="popup__close-button popup__close-button_edit"
           type="button"
-        >
-          <img
-            class="popup__close-button-image"
-            src="<%=require('./images/close-button.svg')%>"
-            alt="попап-кнопка-закрытия"
-          />
-        </button>
+        ></button>
         <form name="edit-form" class="popup__form popup__form_edit" novalidate>
           <h3 class="popup__title popup__title_edit">Редактировать профиль</h3>
           <label class="popup__label" for="profile-name">
             <input
               id="profile-name"
-              name="profile-name"
+              name="name"
               placeholder="Имя"
               type="text"
               required
@@ -88,7 +82,7 @@
           <label class="popup__label" for="profile-title">
             <input
               id="profile-title"
-              name="profile-title"
+              name="about"
               placeholder="О себе"
               type="text"
               required
@@ -113,19 +107,13 @@
         <button
           class="popup__close-button popup__close-button_add"
           type="button"
-        >
-          <img
-            class="popup__close-button-image"
-            src="<%=require('./images/close-button.svg')%>"
-            alt="попап-кнопка-закрытия"
-          />
-        </button>
+        ></button>
         <form name="add-form" class="popup__form popup__form_add" novalidate>
           <h3 class="popup__title popup__title_add">Новое место</h3>
           <label class="popup__label" for="place-name">
             <input
               id="place-name"
-              name="place-name"
+              name="name"
               placeholder="Название"
               type="text"
               required
@@ -140,7 +128,7 @@
           <label class="popup__label" for="place-link">
             <input
               id="place-link"
-              name="place-link"
+              name="link"
               placeholder="Ссылка на картинку"
               type="url"
               required
@@ -162,13 +150,7 @@
         <button
           class="popup__close-button popup__close-button_photo"
           type="button"
-        >
-          <img
-            class="popup__close-button-image"
-            src="<%=require('./images/close-button.svg')%>"
-            alt="попап-кнопка-закрытия"
-          />
-        </button>
+        ></button>
         <img class="popup__photo-image" src="#" alt="" />
         <p class="popup__photo-name"></p>
       </div>
@@ -179,13 +161,7 @@
         <button
           class="popup__close-button popup__close-button_avatar"
           type="button"
-        >
-          <img
-            class="popup__close-button-avatar"
-            src="<%=require('./images/close-button.svg')%>"
-            alt="попап-кнопка-закрытия"
-          />
-        </button>
+        ></button>
         <form
           name="avatar-form"
           class="popup__form popup__form_avatar"
@@ -217,13 +193,7 @@
         <button
           class="popup__close-button popup__close-button_delete"
           type="button"
-        >
-          <img
-            class="popup__close-button-delete"
-            src="<%=require('./images/close-button.svg')%>"
-            alt="попап-кнопка-закрытия"
-          />
-        </button>
+        ></button>
         <form
           name="avatar-form"
           class="popup__form popup__form_delete"

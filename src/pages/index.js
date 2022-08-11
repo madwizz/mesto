@@ -1,7 +1,6 @@
 import FormValidation from "../components/FormValidation.js";
 import Card from "../components/Card.js";
-import { initialPlaces } from "../components/initialPlaces.js";
-import { settings } from "../components/settings.js";
+import { settings } from "../utils/settings.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -33,7 +32,7 @@ import {
   popupDelete,
   popupDeleteForm,
   popupCloseDelete,
-} from "../components/variables.js";
+} from "../utils/constants.js";
 
 // api
 
@@ -89,11 +88,11 @@ const createPlace = (cardData) => {
   return card.generateCard();
 };
 
-const renderInitialPlaces = new Section(
+const cardsList = new Section(
   {
     renderer: (cardData) => {
       const cardElement = createPlace(cardData);
-      renderInitialPlaces.addItem(cardElement);
+      cardsList.addItem(cardElement);
     },
   },
   placesContainer
@@ -104,10 +103,6 @@ const profileInfo = new UserInfo({
   profileTitleSelector: profilePageTitle,
   profileAvatarSelector: profileAvatar,
 });
-
-// const profileSubmit = (userInfo) => {
-//   profileInfo.setUserInfo(userInfo);
-// };
 
 const profileSubmit = (userInfo) => {
   popupProfile.renderLoading(true);
@@ -120,19 +115,13 @@ const profileSubmit = (userInfo) => {
     .catch((err) => console.log(err));
 };
 
-// function placeSubmit(obj) {
-//   const place = createPlace(obj);
-//   renderInitialPlaces.addItem(place);
-// }
-
 const placeSubmit = (cardData) => {
   popupAddPlace.renderLoading(true);
   return api
     .newCard(cardData)
     .then((cardData) => {
       const cardElement = createPlace(cardData);
-      renderInitialPlaces.addItem(cardElement);
-      // renderInitialPlaces.addItem(createPlace(cardData));
+      cardsList.addItem(cardElement);
       popupAddPlace.close();
     })
     .catch((err) => {
@@ -176,11 +165,6 @@ profileEditButton.addEventListener("click", () => {
   inputProfileTitle.value = userInfo.about;
 });
 
-// popupCloseEdit.addEventListener("click", () => {
-//   popupEditForm.reset();
-//   validEditForm.resetValidation();
-// });
-
 profileAvatarButton.addEventListener("click", () => {
   popupAvatarEdit.open();
   validAvatarForm.resetValidation();
@@ -197,7 +181,7 @@ validEditForm.enableValidation();
 // add
 
 const popupAddPlace = new PopupWithForm(popupAdd, placeSubmit);
-popupAddPlace.setEventListenersCard();
+popupAddPlace.setEventListeners();
 
 const validAddForm = new FormValidation(settings, popupAddForm);
 validAddForm.enableValidation();
@@ -227,7 +211,7 @@ let userId;
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then((value) => {
     userId = value[1]._id;
-    renderInitialPlaces.renderItems(value[0].reverse());
+    cardsList.renderItems(value[0].reverse());
     profileInfo.setUserInfo(value[1]);
   })
   .catch((err) => {
